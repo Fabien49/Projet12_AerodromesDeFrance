@@ -1,0 +1,43 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by oaci"
+        [(ngModel)]="oaci"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          (click)="searchOaci()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Aeroclub List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let aeroclub of aeroclubs; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveAeroclub(aeroclub, i)"
+      >
+        {{ aeroclub.oaci }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllAeroclub()">
+      Remove All
+    </button>
+  </div>
+ <div class="col-md-6">
+    <app-aeroclub-details
+      [viewMode]="true"
+      [currentAeroclub]="currentAeroclub"
+    ></app-aeroclub-details>
+  </div>
+</div>

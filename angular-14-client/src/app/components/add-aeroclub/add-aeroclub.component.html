@@ -1,0 +1,90 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="oaci">OACI</label>
+        <input
+          type="text"
+          class="form-control"
+          id="oaci"
+          required
+          [(ngModel)]="aeroclub.oaci"
+          name="oaci"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="aeroclub.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input
+          class="form-control"
+          id="type"
+          required
+          [(ngModel)]="aeroclub.type"
+          name="type"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Numéro de téléphone</label>
+        <input
+          class="form-control"
+          id="phoneNumber"
+          required
+          [(ngModel)]="aeroclub.phoneNumber"
+          name="phoneNumber"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="mail">Adresse mail</label>
+        <input
+          class="form-control"
+          id="mail"
+          required
+          [(ngModel)]="aeroclub.mail"
+          name="mail"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input
+          class="form-control"
+          id="adresse"
+          required
+          [(ngModel)]="aeroclub.adresse"
+          name="adresse"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="codePostal">Code postal</label>
+        <input
+          class="form-control"
+          id="codePostal"
+          required
+          [(ngModel)]="aeroclub.codePostal"
+          name="codePostal"
+        />
+      </div>
+
+      <button (click)="saveAeroclub()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Tutorial was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newAeroclub()">Add</button>
+    </div>
+  </div>
+</div>
