@@ -22,9 +22,9 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let aeroclub of aeroclubs; let i = index"
+        *ngFor="let aeroclub of aeroclubs; let i = index; let tarif of tarifs"
         [class.active]="i == currentIndex"
-        (click)="setActiveAeroclub(aeroclub, i)"
+        (click)="setActiveAeroclub(aeroclub, i, tarif)"
       >
         {{ aeroclub.oaci }}
       </li>

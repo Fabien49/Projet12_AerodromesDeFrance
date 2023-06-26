@@ -2,10 +2,11 @@ package com.fabien.spring.jpa.h2.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tarifs")
-public class Tarifs {
+@Table(name = "tarif")
+public class Tarif {
 
 	@Id
+	@Column(name = "tarif_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -19,15 +20,15 @@ public class Tarifs {
 	private String carburant;
 
 	@OneToOne
-	@JoinColumn(name = "aeroclub_fk")
+	@JoinColumn(name = "aeroclub_id")
 	private AeroClub aeroClub;
 
 
-	public Tarifs() {
+	public Tarif() {
 
 	}
 
-	public Tarifs(long id, String taxeAtterrissage, String taxeParking, String carburant, AeroClub aeroClub) {
+	public Tarif(long id, String taxeAtterrissage, String taxeParking, String carburant, AeroClub aeroClub) {
 		this.id = id;
 		this.taxeAtterrissage = taxeAtterrissage;
 		this.taxeParking = taxeParking;
@@ -77,7 +78,7 @@ public class Tarifs {
 
 	@Override
 	public String toString() {
-		return "Tarifs{" +
+		return "Tarif{" +
 				"id=" + id +
 				", taxeAtterrissage='" + taxeAtterrissage + '\'' +
 				", taxeParking='" + taxeParking + '\'' +

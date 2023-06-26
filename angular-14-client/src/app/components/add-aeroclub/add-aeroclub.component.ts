@@ -16,7 +16,8 @@ export class AddAeroclubComponent {
     phoneNumber: '',
     mail: '',
     adresse: '',
-    codePostal: ''
+    codePostal: '',
+    commune:''
   };
   submitted = false;
 
@@ -30,7 +31,8 @@ export class AddAeroclubComponent {
       phoneNumber: this.aeroclub.phoneNumber,
       mail: this.aeroclub.mail,
       adresse: this.aeroclub.adresse,
-      codePostal: this.aeroclub.codePostal
+      codePostal: this.aeroclub.codePostal,
+      commune: this.aeroclub.commune
     };
 
     this.aeroclubService.create(data)
@@ -52,7 +54,8 @@ export class AddAeroclubComponent {
       phoneNumber: '',
       mail: '',
       adresse: '',
-      codePostal: ''
+      codePostal: '',
+      commune:''
     };
   }
 

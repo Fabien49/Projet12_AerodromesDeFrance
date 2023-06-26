@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class AeroClub {
 
 	@Id
+	@Column(name = "aeroclub_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -30,12 +31,15 @@ public class AeroClub {
 	@Column(name = "codePostal")
 	private String codePostal;
 
+	@Column(name = "commune")
+	private String commune;
+
 
 	public AeroClub() {
 
 	}
 
-	public AeroClub(long id, String oaci, String name, String type, String phoneNumber, String mail, String adresse, String codePostal) {
+	public AeroClub(long id, String oaci, String name, String type, String phoneNumber, String mail, String adresse, String codePostal, String commune) {
 		this.id = id;
 		this.oaci = oaci;
 		this.name = name;
@@ -44,6 +48,7 @@ public class AeroClub {
 		this.mail = mail;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
+		this.commune = commune;
 	}
 
 	public long getId() {
@@ -110,6 +115,14 @@ public class AeroClub {
 		this.codePostal = codePostal;
 	}
 
+	public String getCommune() {
+		return commune;
+	}
+
+	public void setCommune(String commune) {
+		this.commune = commune;
+	}
+
 	@Override
 	public String toString() {
 		return "AeroClub{" +
@@ -121,6 +134,7 @@ public class AeroClub {
 				", mail='" + mail + '\'' +
 				", adresse='" + adresse + '\'' +
 				", codePostal='" + codePostal + '\'' +
+				", commune='" + commune + '\'' +
 				'}';
 	}
 }

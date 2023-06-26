@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Aeroclub } from 'src/app/models/aeroclub.model';
+import { Tarif } from 'src/app/models/tarif.model';
 import { AeroclubService } from 'src/app/services/aeroclub.service';
+import { TarifService } from 'src/app/services/tarif.service';
 
 @Component({
   selector: 'app-aeroclub-list',
@@ -12,10 +14,12 @@ export class AeroclubListComponent implements OnInit {
 
   aeroclubs?: Aeroclub[];
   currentAeroclub: Aeroclub = {};
+  tarifs?: Aeroclub[];
+  currentTarif: Tarif = {};
   currentIndex = -1;
   oaci = '';
 
-  constructor(private aeroclubService: AeroclubService) { }
+  constructor(private aeroclubService: AeroclubService, private tarifService: TarifService) { }
 
   ngOnInit(): void {
     this.retrieveAeroclub();
@@ -32,14 +36,28 @@ export class AeroclubListComponent implements OnInit {
       });
   }
 
+/*   retrieveTarif(id: any): void {
+    this.tarifService.get(id)
+      .subscribe({
+        next: (data) => {
+          this.currentTarif = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  } */
+
+
+
   refreshList(): void {
     this.retrieveAeroclub();
     this.currentAeroclub = {};
     this.currentIndex = -1;
   }
 
-  setActiveAeroclub(aeroclub: Aeroclub, index: number): void {
+  setActiveAeroclub(aeroclub: Aeroclub, index: number, tarif: Tarif): void {
     this.currentAeroclub = aeroclub;
+    this.currentTarif = tarif;
     this.currentIndex = index;
   }
 

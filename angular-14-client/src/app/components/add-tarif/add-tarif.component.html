@@ -1,0 +1,57 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="taxeAtterrissage">Taxe d'atterrissage</label>
+        <input
+          type="text"
+          class="form-control"
+          id="taxeAtterrissage"
+          required
+          [(ngModel)]="tarif.taxeAtterrissage"
+          name="taxeAtterrissage"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="taxeParking">Taxe de parking</label>
+        <input
+          class="form-control"
+          id="taxeParking"
+          required
+          [(ngModel)]="tarif.taxeParking"
+          name="taxeParking"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="carburant">Carburant</label>
+        <input
+          class="form-control"
+          id="carburant"
+          required
+          [(ngModel)]="tarif.carburant"
+          name="carburant"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="aeroclub">Id Aeroclub</label>
+        <input
+          class="form-control"
+          id="aeroclub"
+          required
+          [(ngModel)]="tarif.aeroclub_id"
+          name="aeroclub"
+        />
+      </div>
+
+      <button (click)="saveTarif(tarif.aeroclub_id)" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Les tarifs ont été ajoutés avec succès !</h4>
+      <button class="btn btn-success" (click)="newTarif()">Add</button>
+    </div>
+  </div>
+</div>

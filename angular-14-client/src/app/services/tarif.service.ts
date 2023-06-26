@@ -2,27 +2,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Aeroclub } from '../models/aeroclub.model';
+import { Tarif } from '../models/tarif.model';
 
-const baseUrl = 'http://localhost:8080/api/aeroclub';
+const baseUrl = 'http://localhost:8080/api/tarif';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AeroclubService {
+
+export class TarifService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Aeroclub[]> {
-    return this.http.get<Aeroclub[]>(baseUrl);
+  getAll(): Observable<Tarif[]> {
+    return this.http.get<Tarif[]>(baseUrl);
   }
 
-  get(id: any): Observable<Aeroclub> {
-    return this.http.get<Aeroclub>(`${baseUrl}/${id}`);
+  get(id: any): Observable<Tarif> {
+    return this.http.get<Tarif>(`${baseUrl}/${id}`);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
-  }
+  create(id: any, data: any): Observable<any> {    
+    return this.http.post(`${baseUrl}/${id}`, data);
+  } 
 
   update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
@@ -40,12 +43,11 @@ export class AeroclubService {
   //   return this.http.get<Aeroclub[]>(`${baseUrl}?title=${oaci}`);
   // }
 
-  findById(id: any): Observable<Aeroclub[]> {
+  findById(id: any): Observable<Tarif[]> {
     console.log(`${baseUrl}?id=${id}`);
-    return this.http.get<Aeroclub[]>(`${baseUrl}?id=${id}`);
-}
-  findByOaci(oaci: any): Observable<Aeroclub[]> {
-    console.log(`${baseUrl}?oaci=${oaci}`);
-    return this.http.get<Aeroclub[]>(`${baseUrl}?oaci=${oaci}`);
+    return this.http.get<Tarif[]>(`${baseUrl}?id=${id}`);
+
+
+
 }
 }

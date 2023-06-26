@@ -10,6 +10,7 @@ import { TutorialDetailsComponent } from './components/tutorial-details/tutorial
 import { TutorialsListComponent } from './components/tutorials-list/tutorials-list.component';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { AddAeroclubComponent } from './components/add-aeroclub/add-aeroclub.component';
+import { AddTarifComponent } from './components/add-tarif/add-tarif.component';
 import { AeroclubDetailsComponent } from './components/aeroclub-details/aeroclub-details.component';
 import { AeroclubListComponent } from './components/aeroclub-list/aeroclub-list.component';
 
@@ -21,6 +22,7 @@ import { AeroclubListComponent } from './components/aeroclub-list/aeroclub-list.
     TutorialDetailsComponent,
     TutorialsListComponent,
     AddAeroclubComponent,
+    AddTarifComponent,
     AeroclubDetailsComponent,
     AeroclubListComponent,
     HeroDetailComponent

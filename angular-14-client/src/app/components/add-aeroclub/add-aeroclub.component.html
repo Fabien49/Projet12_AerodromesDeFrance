@@ -78,6 +78,16 @@
           name="codePostal"
         />
       </div>
+      <div class="form-group">
+        <label for="commune">Commune</label>
+        <input
+          class="form-control"
+          id="commune"
+          required
+          [(ngModel)]="aeroclub.commune"
+          name="commune"
+        />
+      </div>
 
       <button (click)="saveAeroclub()" class="btn btn-success">Submit</button>
     </div>

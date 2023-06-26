@@ -6,11 +6,11 @@ import { Aeroclub } from 'src/app/models/aeroclub.model';
 import { Tarif } from 'src/app/models/tarif.model';
 
 @Component({
-  selector: 'app-aeroclub-details',
-  templateUrl: './aeroclub-details.component.html',
-  styleUrls: ['./aeroclub-details.component.css']
+  selector: 'app-tarif-details',
+  templateUrl: './tarif-details.component.html',
+  styleUrls: ['./tarif-details.component.css']
 })
-export class AeroclubDetailsComponent implements OnInit {
+export class TarifDetailsComponent implements OnInit {
 
   @Input() viewMode = false;
 
@@ -56,8 +56,8 @@ export class AeroclubDetailsComponent implements OnInit {
       });
   }
 
-  getTarif(tarif: Tarif): void {
-    this.aeroclubService.get(tarif)
+  getTarif(id: string): void {
+    this.tarifService.get(id)
       .subscribe({
         next: (data) => {
           this.currentTarif = data;
@@ -67,21 +67,21 @@ export class AeroclubDetailsComponent implements OnInit {
       });
   }
 
-  updateAeroclub(): void {
+  updateTarif(): void {
     this.message = '';
 
-    this.aeroclubService.update(this.currentAeroclub.id, this.currentAeroclub)
+    this.tarifService.update(this.currentTarif.id, this.currentTarif)
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.message = res.message ? res.message : 'This aeroclub was updated successfully!';
+          this.message = res.message ? res.message : 'This tarif was updated successfully!';
         },
         error: (e) => console.error(e)
       });
   }
 
-  deleteAeroclub(): void {
-    this.aeroclubService.delete(this.currentAeroclub.id)
+  deleteTarif(): void {
+    this.tarifService.delete(this.currentTarif.id)
       .subscribe({
         next: (res) => {
           console.log(res);

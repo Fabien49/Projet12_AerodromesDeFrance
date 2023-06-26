@@ -1,8 +1,9 @@
 package com.fabien.spring.jpa.h2.controller;
 
 import com.fabien.spring.jpa.h2.model.AeroClub;
-import com.fabien.spring.jpa.h2.model.Tarifs;
+import com.fabien.spring.jpa.h2.model.Tarif;
 import com.fabien.spring.jpa.h2.repository.AeroClubRepository;
+import com.fabien.spring.jpa.h2.repository.TarifRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ public class AeroClubController {
 
 	@Autowired
 	AeroClubRepository aeroClubRepository;
+
+	@Autowired
+	TarifRepository tarifRepository;
 
 	@GetMapping("/aeroclub")
 	public ResponseEntity<List<AeroClub>> getAllAeroclubs(@RequestParam(required = false) String oaci ) {
@@ -53,18 +57,19 @@ public class AeroClubController {
 	}
 
 	@PostMapping("/aeroclub")
-	public ResponseEntity<AeroClub> createAeroclub(@RequestBody AeroClub aeroclub, Tarifs taris) {
+	public ResponseEntity<AeroClub> createAeroclub(@RequestBody AeroClub aeroclub) {
 		try {
 			AeroClub _aeroclub = aeroClubRepository
-					.save(new AeroClub(aeroclub.getId(), aeroclub.getOaci(), aeroclub.getName(), aeroclub.getType(), aeroclub.getAdresse(), aeroclub.getCodePostal(), aeroclub.getPhoneNumber(), aeroclub.getMail()));
+					.save(new AeroClub(aeroclub.getId(), aeroclub.getOaci(), aeroclub.getName(), aeroclub.getType(), aeroclub.getAdresse(), aeroclub.getCodePostal(), aeroclub.getCommune(), aeroclub.getPhoneNumber(), aeroclub.getMail()));
 			return new ResponseEntity<>(_aeroclub, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
+
 	@PutMapping("/aeroclub/{id}")
-	public ResponseEntity<AeroClub> updateTutorial(@PathVariable("id") long id, @RequestBody AeroClub aeroClub) {
+	public ResponseEntity<AeroClub> updateAeroclub(@PathVariable("id") long id, @RequestBody AeroClub aeroClub) {
 		Optional<AeroClub> aeroClubData = aeroClubRepository.findById(id);
 
 		if (aeroClubData.isPresent()) {
@@ -74,6 +79,7 @@ public class AeroClubController {
 			_aeroclub.setType(aeroClub.getType());
 			_aeroclub.setAdresse(aeroClub.getAdresse());
 			_aeroclub.setCodePostal(aeroClub.getCodePostal());
+			_aeroclub.setCommune(aeroClub.getCommune());
 			_aeroclub.setPhoneNumber(aeroClub.getPhoneNumber());
 			_aeroclub.setMail(aeroClub.getMail());
 			return new ResponseEntity<>(aeroClubRepository.save(_aeroclub), HttpStatus.OK);
